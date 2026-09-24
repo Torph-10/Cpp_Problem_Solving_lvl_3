@@ -1,0 +1,75 @@
+#include <iostream>
+#include <string>
+#include <cstdlib>
+#include <ctime>
+using namespace std;
+
+int read_number(string text)
+{
+	int number = 0;
+
+	do
+	{
+		cout << text;
+		cin >> number; 
+	} while (number <= 0);
+
+	return number;
+
+}
+int random_N(int from, int to)
+{
+	int number = rand() % ((to - from + 1) + from);
+
+	return number;
+}
+void read_arr(int number, int arr[100])
+{
+	int i = 0;
+
+	while (i < number)
+	{
+		arr[i] = random_N(1, 100);
+		i++;
+	}
+	cout << endl;
+}
+void print_arr(int number, int arr[100])
+{
+	int i = 0;
+
+	cout << "Array Elements : ";
+	while (i < number)
+	{
+		cout << arr[i] << " ";
+		i++;
+	}
+	cout << endl;
+}
+int check_max_number(int number, int arr[100])
+{
+	int i;
+	i = 0;
+	int max_number = 0;
+
+	while (i < number)
+	{
+		if (arr[i] > max_number)
+			max_number = arr[i];
+		i++;
+	}
+	return max_number;
+}
+int main()
+{
+	srand((unsigned)time(NULL));
+
+	int number, arr[100];
+	number = read_number("Enter the Number of Elements will entred : \n");
+
+	read_arr(number, arr);
+	print_arr(number, arr);
+	cout << "The Max Number is : " << check_max_number(number, arr);
+
+	return 0;
+}
